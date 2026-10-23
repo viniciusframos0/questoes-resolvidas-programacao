@@ -15,21 +15,21 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Questões Resolvidas · Prof. Vinícius Ramos">
-<meta property="og:title" content="Questão 02 · Área do triângulo">
-<meta property="og:description" content="Aprenda de forma visual: informe a base e a altura, veja o triângulo em quadradinhos e a conta passo a passo, com o algoritmo em Portugol Studio. Material do Prof. Vinícius Ramos.">
+<meta property="og:title" content="Área do triângulo: aprenda contando quadradinhos">
+<meta property="og:description" content="Informe a base e a altura, veja o triângulo desenhado e entenda por que dividimos por 2. Com a conta passo a passo e o algoritmo em Portugol Studio!">
 <meta property="og:url" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/">
-<meta property="og:image" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/og-image.jpg?v=2">
-<meta property="og:image:secure_url" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/og-image.jpg?v=2">
-<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/og-image.png?v=3">
+<meta property="og:image:secure_url" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/og-image.png?v=3">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Questão 02 · Área do triângulo, material do Prof. Vinícius Ramos.">
+<meta property="og:image:alt" content="Questão 02: área do triângulo com base 6 e altura 4, desenhado em quadradinhos, igual a 12 cm²">
 
 <!-- X / Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Questão 02 · Área do triângulo">
-<meta name="twitter:description" content="Aprenda de forma visual: informe a base e a altura, veja o triângulo em quadradinhos e a conta passo a passo, com o algoritmo em Portugol Studio.">
-<meta name="twitter:image" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/og-image.jpg?v=2">
+<meta name="twitter:title" content="Área do triângulo: aprenda contando quadradinhos">
+<meta name="twitter:description" content="Informe a base e a altura, veja o triângulo desenhado e entenda por que dividimos por 2. Com a conta passo a passo e o algoritmo em Portugol Studio!">
+<meta name="twitter:image" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/og-image.png?v=3">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,14 +161,9 @@
     .arrow{transform:rotate(90deg);height:24px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-  .share{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:12px;background:#25d366;color:#0b3d1f;font:700 14px Inter,sans-serif;text-decoration:none;transition:.15s;border:0;cursor:pointer}
-  .share:hover{filter:brightness(1.05);transform:translateY(-1px)}
   .author{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:14px;color:var(--muted)}
   .author .av{width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--on-accent,#fff);display:grid;place-items:center;font-weight:800;font-size:12px;flex:none}
   .author b{color:var(--text);font-weight:700}
-  .cta{margin-top:36px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  .cta p{margin:0;font-size:15px}
-  .cta small{display:block;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
@@ -305,11 +300,6 @@
     </div>
     <pre><code id="code"></code></pre>
     <div class="code-tip">💡 Usamos o tipo <b>real</b> (e não <b>inteiro</b>) porque a base, a altura e a área podem ter vírgula, como 2,5. No Portugol Studio, digite números quebrados com <b>ponto</b>: 2.5</div>
-  </section>
-
-  <section class="card cta">
-    <p><b>Gostou? Mande para a turma.</b><small>A prévia no WhatsApp já vem com imagem e descrição.</small></p>
-    <a class="share" href="https://wa.me/?text=%F0%9F%93%90%20Quest%C3%A3o%2002%3A%20%C3%A1rea%20do%20tri%C3%A2ngulo.%20Veja%20o%20desenho%20em%20quadradinhos%2C%20a%20conta%20passo%20a%20passo%20e%20o%20algoritmo%20em%20Portugol%20Studio%3A%20https%3A//viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg>Enviar no WhatsApp</a>
   </section>
   <p class="note">Fórmula: área = (base × altura) ÷ 2. A base e a altura precisam estar na mesma unidade (cm com cm, m com m).<br>Material do Prof. Vinícius Ramos.</p>
 </div>
