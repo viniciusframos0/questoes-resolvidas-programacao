@@ -1,5 +1,7 @@
 # Questões Resolvidas · Lógica de Programação
 
+Material do **Prof. Vinícius Ramos**.
+
 Site com exercícios de lógica de programação resolvidos e transformados em programas interativos.
 
 **Site:** https://viniciusframos0.github.io/questoes-resolvidas-programacao/
