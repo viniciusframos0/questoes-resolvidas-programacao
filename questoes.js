@@ -14,4 +14,12 @@ window.QUESTOES = [
     conceitos: ["Entrada e saída", "Variáveis", "Operadores aritméticos"],
     pasta: "questoes/01-idade-em-tempo/"
   },
+  {
+    numero: "02",
+    titulo: "Área do triângulo",
+    tema: "Estrutura sequencial",
+    enunciado: "Faça um programa que calcule a área de um triângulo.",
+    conceitos: ["Entrada e saída", "Variáveis do tipo real", "Fórmula matemática"],
+    pasta: "questoes/02-area-triangulo/"
+  },
 ];

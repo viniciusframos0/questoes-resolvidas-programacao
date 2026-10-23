@@ -39,3 +39,4 @@ questoes/
 | Nº | Título | Tema |
 |---|---|---|
 | 01 | Idade em meses, dias, horas e minutos | Estrutura sequencial |
+| 02 | Área do triângulo | Estrutura sequencial |

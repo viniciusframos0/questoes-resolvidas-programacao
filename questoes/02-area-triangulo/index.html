@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questão 02 · Área do triângulo | Questões Resolvidas</title>
+<meta name="description" content="Aprenda a calcular a área de um triângulo de forma visual: informe a base e a altura, veja o desenho em quadradinhos e o cálculo passo a passo, com o algoritmo em Portugol Studio, Python e JavaScript.">
+<meta name="theme-color" content="#5b4cf0">
+<link rel="canonical" href="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235b4cf0'/%3E%3Cpath d='M14 48h36L26 16z' fill='none' stroke='white' stroke-width='5' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Questões Resolvidas">
+<meta property="og:title" content="Como calcular a área de um triângulo?">
+<meta property="og:description" content="Informe a base e a altura, veja o triângulo em quadradinhos e entenda o cálculo passo a passo.">
+<meta property="og:url" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/">
+<meta property="og:image" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/og-image.jpg">
+<meta property="og:image:secure_url" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Área do triângulo: base vezes altura dividido por 2. Exemplo: 6 × 4 ÷ 2 = 12.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Como calcular a área de um triângulo?">
+<meta name="twitter:description" content="Informe a base e a altura, veja o triângulo em quadradinhos e entenda o cálculo passo a passo.">
+<meta name="twitter:image" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/02-area-triangulo/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f5f2; --surface:#ffffff; --surface-2:#f0efeb; --border:#e3e1da;
+    --text:#1b1b1f; --muted:#6b6a72; --accent:#5b4cf0; --accent-soft:#ecebfe; --on-accent:#fff;
+    --base:#0f9d76; --alt:#e0731f; --area:#5b4cf0; --grid:#e6e4dd;
+    --warn-bg:#fff6e8; --warn-bd:#f3d29b; --warn-tx:#7a4a07;
+    --danger:#c8322f; --code-bg:#17161c; --code-text:#e8e6f0;
+    --shadow:0 1px 2px rgba(20,20,30,.04),0 8px 24px rgba(20,20,30,.06);
+    --radius:18px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f0f13; --surface:#18181e; --surface-2:#202028; --border:#2b2b35;
+      --text:#f1f0f5; --muted:#9a99a6; --accent:#8b80ff; --accent-soft:#25233d; --on-accent:#0f0f13;
+      --base:#34c99c; --alt:#f39a4a; --area:#8b80ff; --grid:#272731;
+      --warn-bg:#2a2112; --warn-bd:#5a4317; --warn-tx:#f3cf8f;
+      --danger:#ff6b66; --code-bg:#0b0b0f; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0f0f13; --surface:#18181e; --surface-2:#202028; --border:#2b2b35;
+    --text:#f1f0f5; --muted:#9a99a6; --accent:#8b80ff; --accent-soft:#25233d; --on-accent:#0f0f13;
+    --base:#34c99c; --alt:#f39a4a; --area:#8b80ff; --grid:#272731;
+    --warn-bg:#2a2112; --warn-bd:#5a4317; --warn-tx:#f3cf8f;
+    --danger:#ff6b66; --code-bg:#0b0b0f; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:32px 16px 64px}
+  .back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;margin-bottom:20px;padding:6px 10px 6px 6px;border-radius:10px;transition:.15s}
+  .back:hover{color:var(--accent);background:var(--accent-soft)}
+  header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:24px}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:6px 10px;border-radius:999px}
+  h1{font-size:clamp(28px,5vw,44px);line-height:1.1;letter-spacing:-.02em;margin:14px 0 8px;font-weight:800}
+  .lead{color:var(--muted);margin:0;max-width:600px;font-size:16px}
+  .enunciado{margin:18px 0 0;padding:14px 16px;border-left:4px solid var(--accent);background:var(--surface);border-radius:0 12px 12px 0;font-size:15px;max-width:640px;box-shadow:var(--shadow)}
+  .enunciado b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .theme-btn{flex:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;display:grid;place-items:center;transition:.2s}
+  .theme-btn:hover{border-color:var(--accent)}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .section-title{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:36px 0 14px}
+  .section-title::after{content:"";flex:1;height:1px;background:var(--border)}
+  .section-title .n{display:grid;place-items:center;width:24px;height:24px;border-radius:8px;background:var(--accent);color:var(--on-accent);font-size:12px;letter-spacing:0}
+
+  /* Antes de começar */
+  .learn{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .learn .card{padding:18px}
+  .learn h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .learn p{margin:0;font-size:14px;color:var(--muted)}
+  .dot{width:12px;height:12px;border-radius:4px;flex:none}
+
+  /* Laboratório */
+  .lab{display:grid;grid-template-columns:340px 1fr;gap:16px;align-items:start}
+  .inputs{padding:22px;display:grid;gap:18px}
+  .field label{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;margin-bottom:8px}
+  .field small{display:block;color:var(--muted);font-size:13px;font-weight:400;margin:-4px 0 8px}
+  .row{display:flex;align-items:center;gap:8px}
+  .step{flex:none;width:46px;height:52px;border-radius:14px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:.15s}
+  .step:hover{border-color:var(--accent);color:var(--accent)}
+  .step:active{transform:scale(.94)}
+  .num-field{position:relative;flex:1}
+  .num-field input{width:100%;height:52px;border-radius:14px;border:2px solid var(--border);background:var(--surface);color:var(--text);font:800 24px/1 Inter,sans-serif;text-align:center;padding:0 44px 0 12px;outline:none;transition:.15s}
+  .num-field input:focus{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,transparent)}
+  .num-field input.invalid{border-color:var(--danger)}
+  .num-field span{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;font-weight:600;pointer-events:none}
+  .err{color:var(--danger);font-size:13px;font-weight:500;min-height:18px;margin-top:6px}
+  .examples p{margin:0 0 8px;font-size:13px;font-weight:600;color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--border);background:var(--surface-2);color:var(--text);padding:6px 12px;border-radius:999px;font:500 13px Inter,sans-serif;cursor:pointer;transition:.15s}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+
+  .draw{padding:18px;display:grid;gap:12px}
+  .draw-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .draw-top h3{margin:0;font-size:15px}
+  .toggle{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;user-select:none}
+  .toggle input{accent-color:var(--accent);width:16px;height:16px}
+  svg#tri{width:100%;height:auto;display:block;background:var(--surface);border-radius:12px}
+  .vertex{display:grid;gap:6px}
+  .vertex label{font-size:13px;font-weight:600;color:var(--muted)}
+  .vertex input{width:100%;accent-color:var(--accent)}
+  .insight{font-size:14px;background:var(--accent-soft);color:var(--text);border-radius:12px;padding:10px 14px}
+  .insight b{color:var(--accent)}
+
+  /* Passo a passo */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .stp{padding:20px;position:relative}
+  .stp .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .stp .eq{font-size:clamp(20px,2.6vw,26px);font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+  .stp p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+  .stp.final{background:var(--area);border-color:var(--area);color:var(--on-accent)}
+  .stp.final .k,.stp.final p{color:color-mix(in srgb,var(--on-accent) 80%,transparent)}
+  .cb{color:var(--base)} .ca{color:var(--alt)}
+  .stp.final .cb,.stp.final .ca{color:inherit}
+
+  .warn{margin-top:14px;padding:16px 18px;border-radius:14px;background:var(--warn-bg);border:1px solid var(--warn-bd);color:var(--warn-tx);font-size:14px}
+  .warn b{display:block;margin-bottom:4px}
+  .warn ul{margin:6px 0 0;padding-left:18px}
+
+  /* Fluxo */
+  .flow{display:grid;grid-template-columns:1fr auto 1.3fr auto 1fr;align-items:stretch;gap:10px}
+  .step-box{padding:18px}
+  .step-box h3{margin:0 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .step-box p{margin:0 0 10px;font-size:13px;color:var(--muted)}
+  .step-box ul{list-style:none;margin:0;padding:0;font-family:"JetBrains Mono",monospace;font-size:13px;display:grid;gap:6px}
+  .step-box li{background:var(--surface-2);border-radius:8px;padding:6px 8px;overflow-wrap:anywhere}
+  .arrow{display:grid;place-items:center;color:var(--muted)}
+
+  /* Código */
+  .code-card{overflow:hidden}
+  .tabs{display:flex;gap:4px;padding:8px;border-bottom:1px solid var(--border);background:var(--surface);flex-wrap:wrap}
+  .tab{border:0;background:transparent;color:var(--muted);font:600 14px Inter,sans-serif;padding:8px 14px;border-radius:10px;cursor:pointer}
+  .tab[aria-selected=true]{background:var(--accent-soft);color:var(--accent)}
+  .copy{margin-left:auto;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font:500 13px Inter,sans-serif;padding:6px 12px;border-radius:10px;cursor:pointer}
+  pre{margin:0;background:var(--code-bg);color:var(--code-text);padding:20px;overflow-x:auto;font:14px/1.7 "JetBrains Mono",monospace;tab-size:4}
+  .kw{color:#c792ea}.st{color:#a5e075}.nu{color:#f78c6c}.cm{color:#7a7f99;font-style:italic}
+  .code-tip{padding:12px 18px;font-size:13px;color:var(--muted);border-top:1px solid var(--border)}
+
+  .note{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+  @media (max-width:900px){
+    .lab{grid-template-columns:1fr}
+    .learn,.steps{grid-template-columns:1fr}
+    .flow{grid-template-columns:1fr}
+    .arrow{transform:rotate(90deg);height:24px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../../"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Todas as questões</a>
+  <header>
+    <div>
+      <span class="badge">● Questão 02</span>
+      <h1>Área do triângulo</h1>
+      <p class="lead">Informe a base e a altura. O programa desenha o triângulo, conta os quadradinhos e mostra a conta passo a passo.</p>
+      <p class="enunciado"><b>Enunciado</b>Faça um programa que calcule a área de um triângulo.</p>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </header>
+
+  <!-- 1. ANTES DE COMEÇAR -->
+  <div class="section-title"><span class="n">1</span>Antes de começar: três palavras</div>
+  <section class="learn">
+    <div class="card"><h3><span class="dot" style="background:var(--base)"></span>Base</h3><p>É o lado de baixo do triângulo, o "chão" onde ele está apoiado.</p></div>
+    <div class="card"><h3><span class="dot" style="background:var(--alt)"></span>Altura</h3><p>É a distância em linha reta, de pé, do chão até a ponta de cima. <b>Não</b> é o lado inclinado.</p></div>
+    <div class="card"><h3><span class="dot" style="background:var(--area)"></span>Área</h3><p>É o tamanho da parte de dentro: quantos quadradinhos de 1 × 1 cabem no triângulo.</p></div>
+  </section>
+
+  <!-- 2. EXPERIMENTE -->
+  <div class="section-title"><span class="n">2</span>Experimente</div>
+  <section class="lab">
+    <div class="card inputs">
+      <div class="field" style="--c:var(--base)">
+        <label for="base"><span class="dot" style="background:var(--base)"></span>Base</label>
+        <small>Quanto mede o lado de baixo?</small>
+        <div class="row">
+          <button class="step" data-alvo="base" data-d="-1" aria-label="Diminuir a base">−</button>
+          <div class="num-field"><input id="base" inputmode="decimal" value="6" autocomplete="off" aria-describedby="errBase"><span>cm</span></div>
+          <button class="step" data-alvo="base" data-d="1" aria-label="Aumentar a base">+</button>
+        </div>
+        <div class="err" id="errBase" role="alert"></div>
+      </div>
+      <div class="field" style="--c:var(--alt)">
+        <label for="altura"><span class="dot" style="background:var(--alt)"></span>Altura</label>
+        <small>Quanto mede do chão até a ponta?</small>
+        <div class="row">
+          <button class="step" data-alvo="altura" data-d="-1" aria-label="Diminuir a altura">−</button>
+          <div class="num-field"><input id="altura" inputmode="decimal" value="4" autocomplete="off" aria-describedby="errAlt"><span>cm</span></div>
+          <button class="step" data-alvo="altura" data-d="1" aria-label="Aumentar a altura">+</button>
+        </div>
+        <div class="err" id="errAlt" role="alert"></div>
+      </div>
+      <div class="examples">
+        <p>Exemplos do dia a dia</p>
+        <div class="chips">
+          <button class="chip" data-b="6" data-h="4">📐 Esquadro (6 × 4)</button>
+          <button class="chip" data-b="10" data-h="5">🏠 Telhado (10 × 5)</button>
+          <button class="chip" data-b="8" data-h="12">🍕 Fatia de pizza (8 × 12)</button>
+          <button class="chip" data-b="3" data-h="2,5">🚸 Placa (3 × 2,5)</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card draw">
+      <div class="draw-top">
+        <h3>Veja o triângulo</h3>
+        <label class="toggle"><input type="checkbox" id="mostraRet" checked> Mostrar o retângulo</label>
+      </div>
+      <svg id="tri" viewBox="0 0 520 330" role="img" aria-labelledby="triDesc"><title id="triDesc">Desenho do triângulo</title></svg>
+      <div class="vertex">
+        <label for="vertice">Arraste para mover a ponta de cima do triângulo</label>
+        <input type="range" id="vertice" min="0" max="100" value="35">
+      </div>
+      <div class="insight" id="insight"></div>
+    </div>
+  </section>
+
+  <!-- 3. A CONTA -->
+  <div class="section-title"><span class="n">3</span>A conta, passo a passo</div>
+  <section class="steps">
+    <div class="card stp">
+      <div class="k">Passo 1 · Multiplique</div>
+      <div class="eq" id="p1"></div>
+      <p>Base vezes altura. Isso dá a área do <b>retângulo</b> inteiro.</p>
+    </div>
+    <div class="card stp">
+      <div class="k">Passo 2 · Divida por 2</div>
+      <div class="eq" id="p2"></div>
+      <p>O triângulo ocupa <b>metade</b> do retângulo, então dividimos por 2.</p>
+    </div>
+    <div class="card stp final">
+      <div class="k">Resposta</div>
+      <div class="eq" id="p3"></div>
+      <p id="p3txt"></p>
+    </div>
+  </section>
+  <div class="warn">
+    <b>⚠️ Cuidado com os erros mais comuns</b>
+    <ul>
+      <li><b>Esquecer de dividir por 2.</b> Sem isso, você calcula o retângulo, não o triângulo.</li>
+      <li><b>Usar o lado inclinado como altura.</b> A altura é sempre a linha reta, em pé, do chão até a ponta.</li>
+      <li><b>Esquecer o "ao quadrado" na resposta.</b> Área se mede em cm², m²… porque contamos quadradinhos.</li>
+    </ul>
+  </div>
+
+  <!-- 4. COMO O PROGRAMA PENSA -->
+  <div class="section-title"><span class="n">4</span>Como o programa pensa</div>
+  <section class="flow">
+    <div class="card step-box">
+      <h3>1 · Entrada</h3>
+      <p>O programa lê os dois valores.</p>
+      <ul id="flowIn"></ul>
+    </div>
+    <div class="arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="card step-box">
+      <h3>2 · Processamento</h3>
+      <p>Faz a conta e guarda o resultado.</p>
+      <ul id="flowProc"></ul>
+    </div>
+    <div class="arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="card step-box">
+      <h3>3 · Saída</h3>
+      <p>Mostra a resposta na tela.</p>
+      <ul id="flowOut"></ul>
+    </div>
+  </section>
+
+  <!-- 5. CÓDIGO -->
+  <div class="section-title"><span class="n">5</span>O mesmo algoritmo em código</div>
+  <section class="card code-card">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-lang="portugol">Portugol Studio</button>
+      <button class="tab" role="tab" aria-selected="false" data-lang="python">Python</button>
+      <button class="tab" role="tab" aria-selected="false" data-lang="js">JavaScript</button>
+      <button class="copy" id="copyBtn">Copiar código</button>
+    </div>
+    <pre><code id="code"></code></pre>
+    <div class="code-tip">💡 Usamos o tipo <b>real</b> (e não <b>inteiro</b>) porque a base, a altura e a área podem ter vírgula, como 2,5. No Portugol Studio, digite números quebrados com <b>ponto</b>: 2.5</div>
+  </section>
+
+  <p class="note">Fórmula: área = (base × altura) ÷ 2. A base e a altura precisam estar na mesma unidade (cm com cm, m com m).</p>
+</div>
+
+<script>
+  const $ = (s) => document.querySelector(s);
+  const inBase = $('#base'), inAlt = $('#altura'), vert = $('#vertice'), mostraRet = $('#mostraRet');
+  const fmt = (n) => new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(n);
+  const fmtPt = (n) => String(Math.round(n * 100) / 100); // formato de código (ponto)
+  let lang = 'portugol';
+  let ultimo = { base: 6, altura: 4, area: 12 };
+
+  // ===== O coração do exercício =====
+  function calcularArea(base, altura) {
+    return (base * altura) / 2;
+  }
+
+  // ===== Validação (aceita vírgula ou ponto) =====
+  function ler(texto, nome) {
+    const t = texto.trim().replace(',', '.');
+    if (t === '') return { ok: false, erro: `Digite a ${nome}.` };
+    const n = Number(t);
+    if (!Number.isFinite(n)) return { ok: false, erro: 'Use apenas números (ex.: 6 ou 2,5).' };
+    if (n <= 0) return { ok: false, erro: `A ${nome} precisa ser maior que zero.` };
+    if (n > 1000) return { ok: false, erro: 'Use um valor até 1000.' };
+    return { ok: true, valor: n };
+  }
+
+  // ===== Desenho =====
+  function desenhar(b, h, t) {
+    const W = 520, H = 330, pad = 46, padTop = 26;
+    const s = Math.min((W - pad * 2) / b, (H - pad - padTop) / h);
+    const w = b * s, hh = h * s;
+    const x0 = (W - w) / 2, y0 = H - pad;           // canto esquerdo da base
+    const ax = x0 + w * t, ay = y0 - hh;            // ponta de cima
+    const ret = mostraRet.checked;
+
+    let g = '';
+    // quadradinhos (grade de 1 × 1) quando os números são pequenos
+    if (b <= 30 && h <= 30) {
+      for (let i = 0; i <= Math.floor(b); i++) g += `<line x1="${x0 + i * s}" y1="${y0}" x2="${x0 + i * s}" y2="${y0 - hh}" />`;
+      for (let j = 0; j <= Math.floor(h); j++) g += `<line x1="${x0}" y1="${y0 - j * s}" x2="${x0 + w}" y2="${y0 - j * s}" />`;
+    }
+    const grade = ret ? `<g stroke="var(--grid)" stroke-width="1">${g}</g>` : '';
+    const retangulo = ret ? `<rect x="${x0}" y="${ay}" width="${w}" height="${hh}" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="6 5"/>` : '';
+
+    $('#tri').innerHTML = `<title id="triDesc">Triângulo com base ${fmt(b)} cm e altura ${fmt(h)} cm. Área ${fmt(calcularArea(b, h))} cm².</title>
+      ${grade}${retangulo}
+      <polygon points="${x0},${y0} ${x0 + w},${y0} ${ax},${ay}" fill="color-mix(in srgb, var(--area) 28%, transparent)" stroke="var(--area)" stroke-width="2.5" stroke-linejoin="round"/>
+      <line x1="${ax}" y1="${ay}" x2="${ax}" y2="${y0}" stroke="var(--alt)" stroke-width="3" stroke-dasharray="7 5"/>
+      <rect x="${ax}" y="${y0 - 12}" width="12" height="12" fill="none" stroke="var(--alt)" stroke-width="2" transform="${t > .9 ? `translate(-12 0)` : ''}"/>
+      <line x1="${x0}" y1="${y0}" x2="${x0 + w}" y2="${y0}" stroke="var(--base)" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="${ax}" cy="${ay}" r="7" fill="var(--surface)" stroke="var(--area)" stroke-width="3"/>
+      <text x="${x0 + w / 2}" y="${y0 + 30}" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="var(--base)">base = ${fmt(b)} cm</text>
+      <text x="${ax + (t > .6 ? -12 : 12)}" y="${y0 - hh / 2}" text-anchor="${t > .6 ? 'end' : 'start'}" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="var(--alt)" paint-order="stroke" stroke="var(--surface)" stroke-width="5">altura = ${fmt(h)} cm</text>`;
+  }
+
+  // ===== Código de exemplo =====
+  const codigos = {
+    portugol: (b, h, a) => `programa
+{
+	funcao inicio()
+	{
+		// 1. Criamos as "caixinhas" (variáveis) para guardar os números
+		real base, altura, area
+
+		// 2. ENTRADA: pedimos os valores para a pessoa
+		escreva("Digite a base do triângulo: ")
+		leia(base)                    // você digitou: ${fmtPt(b)}
+		escreva("Digite a altura do triângulo: ")
+		leia(altura)                  // você digitou: ${fmtPt(h)}
+
+		// 3. PROCESSAMENTO: base vezes altura, dividido por 2
+		area = (base * altura) / 2    // ${fmtPt(b)} * ${fmtPt(h)} / 2 = ${fmtPt(a)}
+
+		// 4. SAÍDA: mostramos a resposta
+		escreva("A área do triângulo é: ", area, "\\n")
+	}
+}`,
+    python: (b, h, a) => `# 1. ENTRADA: pedimos os valores (float aceita números com ponto)
+base = float(input("Digite a base do triângulo: "))      # você digitou: ${fmtPt(b)}
+altura = float(input("Digite a altura do triângulo: "))  # você digitou: ${fmtPt(h)}
+
+# 2. PROCESSAMENTO: base vezes altura, dividido por 2
+area = (base * altura) / 2   # ${fmtPt(b)} * ${fmtPt(h)} / 2 = ${fmtPt(a)}
+
+# 3. SAÍDA: mostramos a resposta
+print("A área do triângulo é:", area)`,
+    js: (b, h, a) => `// 1. ENTRADA: pedimos os valores
+const base = Number(prompt("Digite a base do triângulo: "));     // você digitou: ${fmtPt(b)}
+const altura = Number(prompt("Digite a altura do triângulo: ")); // você digitou: ${fmtPt(h)}
+
+// 2. PROCESSAMENTO: base vezes altura, dividido por 2
+const area = (base * altura) / 2;   // ${fmtPt(b)} * ${fmtPt(h)} / 2 = ${fmtPt(a)}
+
+// 3. SAÍDA: mostramos a resposta
+console.log("A área do triângulo é:", area);`
+  };
+  const palavras = {
+    portugol: ['programa','funcao','inicio','real','leia','escreva'],
+    python: ['float','input','print'],
+    js: ['const','Number','prompt','console','log']
+  };
+  const esc = (s) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function destacar(code, l) {
+    const re = /(\/\/.*|#.*|"[^"]*"|\b\d+(?:\.\d+)?\b|\b[A-Za-z_]+\b)/g;
+    let out = '', last = 0, m;
+    while ((m = re.exec(code))) {
+      out += esc(code.slice(last, m.index));
+      const t = m[0]; let cls = '';
+      if (t.startsWith('//') || (t.startsWith('#') && l === 'python')) cls = 'cm';
+      else if (t.startsWith('"')) cls = 'st';
+      else if (/^\d/.test(t)) cls = 'nu';
+      else if (palavras[l].includes(t)) cls = 'kw';
+      out += cls ? `<span class="${cls}">${esc(t)}</span>` : esc(t);
+      last = m.index + t.length;
+    }
+    return out + esc(code.slice(last));
+  }
+  function renderCodigo() {
+    const { base, altura, area } = ultimo;
+    $('#code').innerHTML = destacar(codigos[lang](base, altura, area), lang);
+  }
+
+  // ===== Atualiza tudo =====
+  function atualizar() {
+    const vb = ler(inBase.value, 'base'), vh = ler(inAlt.value, 'altura');
+    inBase.classList.toggle('invalid', !vb.ok); inAlt.classList.toggle('invalid', !vh.ok);
+    $('#errBase').textContent = vb.ok ? '' : vb.erro;
+    $('#errAlt').textContent = vh.ok ? '' : vh.erro;
+    if (!vb.ok || !vh.ok) return;
+
+    const b = vb.valor, h = vh.valor, ret = b * h, a = calcularArea(b, h);
+    ultimo = { base: b, altura: h, area: a };
+    desenhar(b, h, vert.value / 100);
+
+    $('#p1').innerHTML = `<span class="cb">${fmt(b)}</span> × <span class="ca">${fmt(h)}</span> = ${fmt(ret)}`;
+    $('#p2').innerHTML = `${fmt(ret)} ÷ 2 = ${fmt(a)}`;
+    $('#p3').innerHTML = `${fmt(a)} cm²`;
+    $('#p3txt').textContent = `A área do triângulo é ${fmt(a)} centímetros quadrados.`;
+
+    const inteiros = Number.isInteger(b) && Number.isInteger(h) && b <= 30 && h <= 30;
+    $('#insight').innerHTML = mostraRet.checked
+      ? (inteiros
+          ? `O retângulo tem <b>${fmt(ret)} quadradinhos</b>. O triângulo ocupa exatamente a metade: <b>${fmt(a)} quadradinhos</b>. Mova a ponta: a área continua a mesma!`
+          : `O retângulo tem área <b>${fmt(ret)} cm²</b>. O triângulo ocupa exatamente a metade: <b>${fmt(a)} cm²</b>. Mova a ponta: a área continua a mesma!`)
+      : `Mova a ponta do triângulo. Enquanto a base e a altura forem as mesmas, a área continua <b>${fmt(a)} cm²</b>.`;
+
+    $('#flowIn').innerHTML = `<li>base = ${fmt(b)}</li><li>altura = ${fmt(h)}</li>`;
+    $('#flowProc').innerHTML = `<li>area = (base × altura) ÷ 2</li><li>area = (${fmt(b)} × ${fmt(h)}) ÷ 2</li><li>area = ${fmt(ret)} ÷ 2 = ${fmt(a)}</li>`;
+    $('#flowOut').innerHTML = `<li>A área do triângulo é: ${fmt(a)}</li>`;
+    renderCodigo();
+  }
+
+  // ===== Eventos =====
+  [inBase, inAlt].forEach(el => el.addEventListener('input', atualizar));
+  vert.addEventListener('input', atualizar);
+  mostraRet.addEventListener('change', atualizar);
+  document.querySelectorAll('.step').forEach(btn => btn.addEventListener('click', () => {
+    const el = $('#' + btn.dataset.alvo);
+    const v = ler(el.value, '');
+    const novo = Math.max(1, Math.min(1000, Math.round((v.ok ? v.valor : 0) + Number(btn.dataset.d))));
+    el.value = String(novo);
+    atualizar();
+  }));
+  document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+    inBase.value = c.dataset.b; inAlt.value = c.dataset.h; atualizar();
+  }));
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', 'false'));
+    t.setAttribute('aria-selected', 'true'); lang = t.dataset.lang; renderCodigo();
+  }));
+  $('#copyBtn').addEventListener('click', async () => {
+    const btn = $('#copyBtn');
+    try { await navigator.clipboard.writeText($('#code').textContent); btn.textContent = 'Copiado ✓'; }
+    catch { btn.textContent = 'Não foi possível copiar'; }
+    setTimeout(() => btn.textContent = 'Copiar código', 1600);
+  });
+  $('#themeBtn').addEventListener('click', () => {
+    const root = document.documentElement;
+    const escuro = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = escuro ? 'light' : 'dark';
+    try { localStorage.setItem('tema', root.dataset.theme); } catch {}
+  });
+  try { const t = localStorage.getItem('tema'); if (t) document.documentElement.dataset.theme = t; } catch {}
+
+  atualizar();
+</script>
+</body>
+</html>
