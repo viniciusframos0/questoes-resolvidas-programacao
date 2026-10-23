@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questão 01 · Idade em meses, dias, horas e minutos | Questões Resolvidas</title>
+<meta name="description" content="Digite sua idade e veja quanto tempo você já viveu em meses, dias, horas e minutos, com o algoritmo explicado passo a passo. Um exercício de lógica de programação.">
+<meta name="theme-color" content="#5b4cf0">
+<link rel="canonical" href="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/01-idade-em-tempo/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235b4cf0'/%3E%3Ccircle cx='32' cy='34' r='17' fill='none' stroke='white' stroke-width='5'/%3E%3Cpath d='M32 25v10l6 5M26 11h12' stroke='white' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+
+<!-- Compartilhamento (WhatsApp, Facebook, LinkedIn, Telegram) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Questões Resolvidas">
+<meta property="og:title" content="Quanto tempo você já viveu?">
+<meta property="og:description" content="Digite sua idade e descubra em meses, dias, horas e minutos, com o algoritmo explicado passo a passo.">
+<meta property="og:url" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/01-idade-em-tempo/">
+<meta property="og:image" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/01-idade-em-tempo/og-image.jpg">
+<meta property="og:image:secure_url" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/01-idade-em-tempo/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quanto tempo você já viveu? Exemplo com 25 anos: 300 meses, 9.125 dias, 219.000 horas e 13,1 milhões de minutos.">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quanto tempo você já viveu?">
+<meta name="twitter:description" content="Digite sua idade e descubra em meses, dias, horas e minutos, com o algoritmo explicado passo a passo.">
+<meta name="twitter:image" content="https://viniciusframos0.github.io/questoes-resolvidas-programacao/questoes/01-idade-em-tempo/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f5f2; --surface:#ffffff; --surface-2:#f0efeb; --border:#e3e1da;
+    --text:#1b1b1f; --muted:#6b6a72; --accent:#5b4cf0; --accent-soft:#ecebfe;
+    --c1:#5b4cf0; --c2:#0f9d76; --c3:#e0731f; --c4:#d6336c;
+    --danger:#c8322f; --code-bg:#17161c; --code-text:#e8e6f0;
+    --shadow:0 1px 2px rgba(20,20,30,.04),0 8px 24px rgba(20,20,30,.06);
+    --radius:18px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f0f13; --surface:#18181e; --surface-2:#202028; --border:#2b2b35;
+      --text:#f1f0f5; --muted:#9a99a6; --accent:#8b80ff; --accent-soft:#25233d;
+      --c1:#8b80ff; --c2:#34c99c; --c3:#f39a4a; --c4:#f0628f;
+      --danger:#ff6b66; --code-bg:#0b0b0f; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0f0f13; --surface:#18181e; --surface-2:#202028; --border:#2b2b35;
+    --text:#f1f0f5; --muted:#9a99a6; --accent:#8b80ff; --accent-soft:#25233d;
+    --c1:#8b80ff; --c2:#34c99c; --c3:#f39a4a; --c4:#f0628f;
+    --danger:#ff6b66; --code-bg:#0b0b0f; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:32px 16px 64px}
+  header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:28px}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:6px 10px;border-radius:999px}
+  h1{font-size:clamp(28px,5vw,44px);line-height:1.1;letter-spacing:-.02em;margin:14px 0 8px;font-weight:800}
+  .lead{color:var(--muted);margin:0;max-width:560px;font-size:16px}
+  .theme-btn{flex:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;display:grid;place-items:center;transition:.2s}
+  .theme-btn:hover{border-color:var(--accent)}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+  /* Entrada */
+  .input-card{padding:24px;display:grid;gap:18px}
+  .input-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  label.lbl{font-weight:600;font-size:15px}
+  .lbl small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+  .stepper{display:flex;align-items:center;gap:8px}
+  .step{width:48px;height:48px;border-radius:14px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:.15s}
+  .step:hover{border-color:var(--accent);color:var(--accent)}
+  .step:active{transform:scale(.94)}
+  .age-field{position:relative}
+  #idade{width:140px;height:64px;border-radius:16px;border:2px solid var(--border);background:var(--surface);color:var(--text);font:800 32px/1 Inter,sans-serif;text-align:center;padding:0 40px 0 12px;outline:none;transition:.15s;-moz-appearance:textfield}
+  #idade::-webkit-outer-spin-button,#idade::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  #idade:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+  #idade.invalid{border-color:var(--danger)}
+  .unit{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;font-weight:600;pointer-events:none}
+  input[type=range]{width:100%;accent-color:var(--accent);height:6px;cursor:pointer}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--border);background:var(--surface-2);color:var(--text);padding:6px 12px;border-radius:999px;font:500 13px Inter,sans-serif;cursor:pointer;transition:.15s}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+  .msg{min-height:20px;font-size:14px;color:var(--muted)}
+  .msg.err{color:var(--danger);font-weight:500}
+
+  /* Saída */
+  .section-title{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:36px 0 14px}
+  .section-title::after{content:"";flex:1;height:1px;background:var(--border)}
+  .results{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .res{padding:20px;position:relative;overflow:hidden;transition:transform .2s}
+  .res:hover{transform:translateY(-2px)}
+  .res::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--col)}
+  .res .ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--col) 14%,transparent);color:var(--col);margin-bottom:14px}
+  .res .name{font-size:14px;color:var(--muted);font-weight:500}
+  .res .val{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;margin:2px 0 10px;font-variant-numeric:tabular-nums;word-break:break-all}
+  .res .formula{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);background:var(--surface-2);border-radius:8px;padding:6px 8px;display:inline-block}
+  .res .formula b{color:var(--col);font-weight:600}
+  .dim .val{opacity:.25}
+
+  /* Fluxo */
+  .flow{display:grid;grid-template-columns:1fr auto 1.4fr auto 1fr;align-items:stretch;gap:10px}
+  .step-box{padding:18px}
+  .step-box h3{margin:0 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .step-box p{margin:0 0 10px;font-size:13px;color:var(--muted)}
+  .step-box ul{list-style:none;margin:0;padding:0;font-family:"JetBrains Mono",monospace;font-size:13px;display:grid;gap:6px}
+  .step-box li{background:var(--surface-2);border-radius:8px;padding:6px 8px;overflow-wrap:anywhere}
+  .arrow{display:grid;place-items:center;color:var(--muted)}
+
+  /* Código */
+  .code-card{overflow:hidden}
+  .tabs{display:flex;gap:4px;padding:8px;border-bottom:1px solid var(--border);background:var(--surface);flex-wrap:wrap}
+  .tab{border:0;background:transparent;color:var(--muted);font:600 14px Inter,sans-serif;padding:8px 14px;border-radius:10px;cursor:pointer}
+  .tab[aria-selected=true]{background:var(--accent-soft);color:var(--accent)}
+  .copy{margin-left:auto;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font:500 13px Inter,sans-serif;padding:6px 12px;border-radius:10px;cursor:pointer}
+  pre{margin:0;background:var(--code-bg);color:var(--code-text);padding:20px;overflow-x:auto;font:14px/1.7 "JetBrains Mono",monospace;tab-size:2}
+  .k{color:#c792ea}.s{color:#a5e075}.n{color:#f78c6c}.c{color:#7a7f99;font-style:italic}.f{color:#82aaff}
+
+  .note{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+  @media (max-width:860px){
+    .results{grid-template-columns:repeat(2,1fr)}
+    .flow{grid-template-columns:1fr}
+    .arrow{transform:rotate(90deg);height:24px}
+  }
+  @media (max-width:420px){
+    .results{grid-template-columns:1fr}
+    .stepper{width:100%;justify-content:space-between}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  .back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;margin-bottom:20px;padding:6px 10px 6px 6px;border-radius:10px;transition:.15s}
+  .back:hover{color:var(--accent);background:var(--accent-soft)}
+  .enunciado{margin:18px 0 0;padding:14px 16px;border-left:4px solid var(--accent);background:var(--surface);border-radius:0 12px 12px 0;font-size:15px;max-width:640px;box-shadow:var(--shadow)}
+  .enunciado b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../../"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Todas as questões</a>
+  <header>
+    <div>
+      <span class="badge">● Questão 01</span>
+      <h1>Quanto tempo você já viveu?</h1>
+      <p class="lead">Digite sua idade em anos e o programa converte para meses, dias, horas e minutos. Logo abaixo, veja passo a passo como ele faz isso.</p>
+      <p class="enunciado"><b>Enunciado</b>Faça um programa que receba a idade de uma pessoa em anos, calcule e imprima essa idade em: Meses, Dias, Horas e Minutos.</p>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </header>
+
+  <!-- ENTRADA -->
+  <section class="card input-card" aria-labelledby="lblIdade">
+    <div class="input-top">
+      <label class="lbl" id="lblIdade" for="idade">Sua idade
+        <small>Número inteiro entre 0 e 150</small>
+      </label>
+      <div class="stepper">
+        <button class="step" id="menos" aria-label="Diminuir um ano">−</button>
+        <div class="age-field">
+          <input id="idade" type="number" inputmode="numeric" min="0" max="150" step="1" value="18" aria-describedby="msg">
+          <span class="unit">anos</span>
+        </div>
+        <button class="step" id="mais" aria-label="Aumentar um ano">+</button>
+      </div>
+    </div>
+    <input type="range" id="slider" min="0" max="120" value="18" aria-label="Arraste para escolher a idade">
+    <div class="chips" aria-label="Exemplos rápidos">
+      <button class="chip" data-v="1">1 ano</button>
+      <button class="chip" data-v="10">10 anos</button>
+      <button class="chip" data-v="18">18 anos</button>
+      <button class="chip" data-v="30">30 anos</button>
+      <button class="chip" data-v="60">60 anos</button>
+      <button class="chip" data-v="100">100 anos</button>
+    </div>
+    <div class="msg" id="msg" role="status" aria-live="polite"></div>
+  </section>
+
+  <!-- SAÍDA -->
+  <div class="section-title">Resultado</div>
+  <section class="results" id="results">
+    <article class="card res" style="--col:var(--c1)">
+      <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+      <div class="name">Meses</div>
+      <div class="val" id="vMeses">0</div>
+      <div class="formula" id="fMeses"></div>
+    </article>
+    <article class="card res" style="--col:var(--c2)">
+      <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
+      <div class="name">Dias</div>
+      <div class="val" id="vDias">0</div>
+      <div class="formula" id="fDias"></div>
+    </article>
+    <article class="card res" style="--col:var(--c3)">
+      <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h12M6 22h12M7 2c0 5 10 5 10 10S7 17 7 22M17 2c0 5-10 5-10 10s10 5 10 10"/></svg></div>
+      <div class="name">Horas</div>
+      <div class="val" id="vHoras">0</div>
+      <div class="formula" id="fHoras"></div>
+    </article>
+    <article class="card res" style="--col:var(--c4)">
+      <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></div>
+      <div class="name">Minutos</div>
+      <div class="val" id="vMinutos">0</div>
+      <div class="formula" id="fMinutos"></div>
+    </article>
+  </section>
+
+  <!-- COMO O PROGRAMA PENSA -->
+  <div class="section-title">Como o programa pensa</div>
+  <section class="flow">
+    <div class="card step-box">
+      <h3>1 · Entrada</h3>
+      <p>O programa lê o valor digitado.</p>
+      <ul><li id="flowIn">idade = 18</li></ul>
+    </div>
+    <div class="arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="card step-box">
+      <h3>2 · Processamento</h3>
+      <p>Faz as contas, uma de cada vez.</p>
+      <ul id="flowProc"></ul>
+    </div>
+    <div class="arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="card step-box">
+      <h3>3 · Saída</h3>
+      <p>Mostra os resultados na tela.</p>
+      <ul id="flowOut"></ul>
+    </div>
+  </section>
+
+  <div class="section-title">O mesmo algoritmo em código</div>
+  <section class="card code-card">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-lang="portugol">Portugol Studio</button>
+      <button class="tab" role="tab" aria-selected="false" data-lang="python">Python</button>
+      <button class="tab" role="tab" aria-selected="false" data-lang="js">JavaScript</button>
+      <button class="copy" id="copyBtn">Copiar código</button>
+    </div>
+    <pre><code id="code"></code></pre>
+  </section>
+
+  <p class="note">Considera 1 ano = 12 meses = 365 dias (sem anos bissextos), 1 dia = 24 horas e 1 hora = 60 minutos, como pede o enunciado.</p>
+</div>
+
+<script>
+  // ===== Elementos =====
+  const $ = (s) => document.querySelector(s);
+  const input = $('#idade'), slider = $('#slider'), msg = $('#msg');
+  const fmt = (n) => new Intl.NumberFormat('pt-BR').format(n);
+  let atual = { meses: 0, dias: 0, horas: 0, minutos: 0 };
+  let lang = 'portugol';
+
+  // ===== O coração do exercício =====
+  function calcular(idade) {
+    const meses = idade * 12;
+    const dias = idade * 365;
+    const horas = dias * 24;
+    const minutos = horas * 60;
+    return { meses, dias, horas, minutos };
+  }
+
+  // ===== Animação dos números =====
+  function animar(el, de, para) {
+    const inicio = performance.now(), dur = 550;
+    function frame(t) {
+      const p = Math.min((t - inicio) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(de + (para - de) * e));
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // ===== Validação =====
+  function validar(texto) {
+    if (texto.trim() === '') return { ok: false, erro: 'Digite sua idade para ver o resultado.', vazio: true };
+    const n = Number(texto);
+    if (!Number.isFinite(n)) return { ok: false, erro: 'Isso não parece um número.' };
+    if (!Number.isInteger(n)) return { ok: false, erro: 'Use um número inteiro de anos (ex.: 25).' };
+    if (n < 0) return { ok: false, erro: 'A idade não pode ser negativa.' };
+    if (n > 150) return { ok: false, erro: 'Ninguém viveu tanto! Tente um valor até 150.' };
+    return { ok: true, valor: n };
+  }
+
+  // ===== Atualiza a tela =====
+  function atualizar(origem) {
+    const v = validar(input.value);
+    input.classList.toggle('invalid', !v.ok && !v.vazio);
+    $('#results').classList.toggle('dim', !v.ok);
+    if (!v.ok) { msg.textContent = v.erro; msg.className = v.vazio ? 'msg' : 'msg err'; return; }
+
+    const idade = v.valor;
+    if (origem !== 'slider') slider.value = Math.min(idade, 120);
+    const r = calcular(idade);
+
+    animar($('#vMeses'), atual.meses, r.meses);
+    animar($('#vDias'), atual.dias, r.dias);
+    animar($('#vHoras'), atual.horas, r.horas);
+    animar($('#vMinutos'), atual.minutos, r.minutos);
+    atual = r;
+
+    $('#fMeses').innerHTML = `<b>${idade}</b> × 12`;
+    $('#fDias').innerHTML = `<b>${idade}</b> × 365`;
+    $('#fHoras').innerHTML = `<b>${fmt(r.dias)}</b> × 24`;
+    $('#fMinutos').innerHTML = `<b>${fmt(r.horas)}</b> × 60`;
+
+    $('#flowIn').textContent = `idade = ${idade}`;
+    $('#flowProc').innerHTML = `
+      <li>meses = ${idade} × 12 = ${fmt(r.meses)}</li>
+      <li>dias = ${idade} × 365 = ${fmt(r.dias)}</li>
+      <li>horas = dias × 24 = ${fmt(r.horas)}</li>
+      <li>minutos = horas × 60 = ${fmt(r.minutos)}</li>`;
+    $('#flowOut').innerHTML = `
+      <li>Meses: ${fmt(r.meses)}</li><li>Dias: ${fmt(r.dias)}</li>
+      <li>Horas: ${fmt(r.horas)}</li><li>Minutos: ${fmt(r.minutos)}</li>`;
+
+    msg.className = 'msg';
+    msg.textContent = idade === 0 ? 'Recém-chegado ao mundo! 👶' :
+      `Com ${idade} ${idade === 1 ? 'ano' : 'anos'}, você já viveu mais de ${fmt(r.minutos)} minutos.`;
+    renderCodigo(idade);
+  }
+
+  // ===== Código de exemplo (com o valor digitado) =====
+  const codigos = {
+    portugol: (i) => `programa
+{
+	funcao inicio()
+	{
+		inteiro idade, meses, dias, horas, minutos
+
+		escreva("Digite sua idade em anos: ")
+		leia(idade)            // você digitou: ${i}
+
+		meses = idade * 12
+		dias = idade * 365
+		horas = dias * 24
+		minutos = horas * 60
+
+		escreva("Meses: ", meses, "\\n")      // ${fmt(i*12)}
+		escreva("Dias: ", dias, "\\n")        // ${fmt(i*365)}
+		escreva("Horas: ", horas, "\\n")      // ${fmt(i*365*24)}
+		escreva("Minutos: ", minutos, "\\n")  // ${fmt(i*365*24*60)}
+	}
+}`,
+    python: (i) => `idade = int(input("Digite sua idade em anos: "))  # você digitou: ${i}
+
+meses = idade * 12
+dias = idade * 365
+horas = dias * 24
+minutos = horas * 60
+
+print("Meses:", meses)      # ${fmt(i*12)}
+print("Dias:", dias)        # ${fmt(i*365)}
+print("Horas:", horas)      # ${fmt(i*365*24)}
+print("Minutos:", minutos)  # ${fmt(i*365*24*60)}`,
+    js: (i) => `const idade = Number(prompt("Digite sua idade em anos: ")); // você digitou: ${i}
+
+const meses = idade * 12;
+const dias = idade * 365;
+const horas = dias * 24;
+const minutos = horas * 60;
+
+console.log("Meses:", meses);      // ${fmt(i*12)}
+console.log("Dias:", dias);        // ${fmt(i*365)}
+console.log("Horas:", horas);      // ${fmt(i*365*24)}
+console.log("Minutos:", minutos);  // ${fmt(i*365*24*60)}`
+  };
+
+  const palavras = {
+    portugol: ['programa','funcao','inicio','inteiro','leia','escreva'],
+    python: ['int','input','print'],
+    js: ['const','Number','prompt','console','log']
+  };
+
+  const esc = (s) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function destacar(code, l) {
+    const re = /(\/\/.*|#.*|"[^"]*"|\b\d+\b|\b[A-Za-z_]+\b)/g;
+    let out = '', last = 0, m;
+    while ((m = re.exec(code))) {
+      out += esc(code.slice(last, m.index));
+      const t = m[0];
+      let cls = '';
+      if (t.startsWith('//') || (t.startsWith('#') && l === 'python')) cls = 'c';
+      else if (t.startsWith('"')) cls = 's';
+      else if (/^\d+$/.test(t)) cls = 'n';
+      else if (palavras[l].includes(t)) cls = 'k';
+      out += cls ? `<span class="${cls}">${esc(t)}</span>` : esc(t);
+      last = m.index + t.length;
+    }
+    return out + esc(code.slice(last));
+  }
+
+  function renderCodigo(idade) {
+    $('#code').innerHTML = destacar(codigos[lang](idade), lang);
+  }
+
+  // ===== Eventos =====
+  input.addEventListener('input', () => atualizar('input'));
+  slider.addEventListener('input', () => { input.value = slider.value; atualizar('slider'); });
+  function somar(d) {
+    const v = validar(input.value);
+    const base = v.ok ? v.valor : 0;
+    input.value = Math.max(0, Math.min(150, base + d));
+    atualizar('step');
+  }
+  $('#menos').addEventListener('click', () => somar(-1));
+  $('#mais').addEventListener('click', () => somar(1));
+  document.querySelectorAll('.chip').forEach(c =>
+    c.addEventListener('click', () => { input.value = c.dataset.v; atualizar('chip'); }));
+
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', 'false'));
+    t.setAttribute('aria-selected', 'true');
+    lang = t.dataset.lang;
+    const v = validar(input.value);
+    renderCodigo(v.ok ? v.valor : 0);
+  }));
+
+  $('#copyBtn').addEventListener('click', async () => {
+    const btn = $('#copyBtn');
+    try { await navigator.clipboard.writeText($('#code').textContent); btn.textContent = 'Copiado ✓'; }
+    catch { btn.textContent = 'Não foi possível copiar'; }
+    setTimeout(() => btn.textContent = 'Copiar código', 1600);
+  });
+
+  // Tema claro/escuro
+  $('#themeBtn').addEventListener('click', () => {
+    const root = document.documentElement;
+    const escuroAgora = root.dataset.theme ? root.dataset.theme === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = escuroAgora ? 'light' : 'dark';
+    try { localStorage.setItem('tema', root.dataset.theme); } catch {}
+  });
+  try { const t = localStorage.getItem('tema'); if (t) document.documentElement.dataset.theme = t; } catch {}
+
+  atualizar('init');
+</script>
+</body>
+</html>
